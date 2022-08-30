@@ -40,12 +40,12 @@ namespace UnitTestAspNetCoreMVC.Test
         }
 
         [Fact]
-        public void Index_ActionExecutes_ReturnProductList()
+        public async void Index_ActionExecutes_ReturnProductList()
         {
             _mockRepo.Setup(repo => repo.GetAll()).ReturnsAsync(_cars);
 
-            var result = _controller.Index();
-            var viewResult = Assert.IsType<ViewResult>(result.Result);
+            var result = await _controller.Index();
+            var viewResult = Assert.IsType<ViewResult>(result);
 
             var carList = Assert.IsAssignableFrom<IEnumerable<Car>>(viewResult.Model);
 

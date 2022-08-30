@@ -31,7 +31,7 @@ namespace UnitTestAspNetCoreMVC.Web.Controllers
         [HttpGet("{id}")]
         public async Task<IActionResult> GetCar(int id)
         {
-            var car = _repository.GetById(id);
+            var car = await _repository.GetById(id);
             if (car == null)
             {
                 return NotFound();
@@ -67,7 +67,7 @@ namespace UnitTestAspNetCoreMVC.Web.Controllers
 
         // DELETE: api/CarsApi/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteCar(int id)
+        public async Task<ActionResult<Car>> DeleteCar(int id)
         {
             var car = await _repository.GetById(id);
             if (car == null)
