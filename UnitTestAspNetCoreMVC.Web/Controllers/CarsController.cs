@@ -27,7 +27,7 @@ namespace UnitTestAspNetCoreMVC.Web.Controllers
         {
             if (id == null || _repository.GetAll() == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
 
             var car = await _repository.GetById((int)id);
@@ -65,7 +65,7 @@ namespace UnitTestAspNetCoreMVC.Web.Controllers
         {
             if (id == null || _repository.GetAll() == null)
             {
-                return NotFound();
+                return RedirectToAction("Index");
             }
 
             var car = await _repository.GetById((int)id);
